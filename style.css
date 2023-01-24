@@ -1,0 +1,278 @@
+/******** GENERAL *********/
+html {
+  font-size: 62.5%;
+  box-sizing: inherit;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(to left top, #e599f7, #748ffc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  position: relative;
+  width: 100rem;
+  height: 60rem;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 3rem;
+  box-shadow: 0 1rem 2rem rgba(74, 74, 74, 0.5);
+  overflow: hidden;
+}
+
+.player {
+  padding: 8rem;
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.75s;
+}
+
+.player--name {
+  color: #343a40;
+  font-size: 4.2rem;
+}
+
+.summary--points {
+  font-size: 8.2rem;
+  color: #1794fb;
+  position: absolute;
+  transform: translateY(70%);
+}
+
+.current {
+  padding: 2.4rem 6rem;
+  background: #1794fb;
+  opacity: 0.8;
+  border-radius: 3rem;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.6rem;
+}
+
+.current--text {
+  font-size: 2rem;
+}
+
+.current--points {
+  font-size: 3.8rem;
+}
+
+/******** ACTIVE *********/
+.active--player {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.active--player .current {
+  opacity: 1;
+}
+
+/******** WINNER *********/
+.player--winner {
+  background-color: rgba(98, 255, 0, 0.8);
+}
+
+.player--winner .player--name,
+.player--winner .summary--points {
+  color: #1794fb;
+}
+
+/******** BUTTONS *********/
+.btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #343a40;
+  font-size: 1.8rem;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 1rem 5rem rgba(52, 52, 52, 0.15);
+  transition: all 0.2s;
+}
+
+.btn:active {
+  transform: translate(-50%, 3px);
+  box-shadow: 0 1rem 2rem rgba(52, 52, 52, 0.15);
+}
+
+.btn__new--game {
+  top: 4rem;
+}
+
+.btn__roll--dice {
+  top: 40rem;
+}
+
+.btn__hold {
+  top: 47rem;
+}
+
+/******** DICE *********/
+.dice {
+  height: 10rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 16rem;
+  box-shadow: 0 1rem 7rem rgba(52, 52, 52, 0.15);
+}
+
+.hidden {
+  display: none;
+}
+
+/******** POPUP *********/
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  transform: translate(50%, -50%) scale(0);
+  transition: 0.4s ease-in-out;
+}
+
+.popup.active {
+  transform: translateY(0%) scale(100%);
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1rem);
+}
+
+.popup__body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.popup__content {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #343a40;
+  max-width: 80rem;
+  padding: 6rem 6rem 10rem;
+  border: 2px solid #e599f7;
+  border-radius: 2rem;
+  position: relative;
+}
+
+.popup__close {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #1794fb;
+  padding: 1rem 2rem;
+  background-color: #f5d0fd;
+  border: 1px solid #e262ff;
+  border-radius: 3rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 4rem;
+}
+
+.popup__title {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.popup__text {
+  font-size: 2rem;
+  display: grid;
+  row-gap: 1rem;
+}
+
+.popup__text span {
+  font-size: 2.4rem;
+  color: #748ffc;
+}
+
+.popup__open {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  text-decoration: none;
+  color: #1794fb;
+  background-color: #f5d0fd;
+  padding: 1rem 2rem;
+  border-radius: 50rem;
+  border: 1px solid #e262ff;
+  box-shadow: 0 1rem 5rem rgba(52, 52, 52, 0.25);
+  transition: all 0.3s;
+}
+
+.popup__open:active {
+  transform: translateY(3px);
+  box-shadow: 0 1rem 2rem rgba(52, 52, 52, 0.15);
+}
+
+/******** MEDIA QUERIES *********/
+@media (max-width: 68rem) {
+  html {
+    font-size: 56%;
+  }
+}
+
+@media (max-width: 58rem) {
+  html {
+    font-size: 46%;
+  }
+
+  main {
+    width: 94rem;
+    height: 50rem;
+  }
+
+  .player {
+    padding: 6rem;
+  }
+
+  .btn {
+    padding: 1.3rem 2.3rem;
+  }
+
+  .btn__new--game {
+    top: 3rem;
+  }
+
+  .btn__roll--dice {
+    top: 31rem;
+  }
+
+  .btn__hold {
+    top: 39rem;
+  }
+}
+
+@media (max-width: 50rem) {
+  html {
+    font-size: 40%;
+  }
+}
+
+@media (max-width: 32rem) {
+  html {
+    font-size: 36%;
+  }
+}
